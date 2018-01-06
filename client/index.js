@@ -3,14 +3,6 @@
 
 const React = require('react');
 const ReactDOM = require('react-dom');
+import App from './App.jsx'
 
-function App() {
-
-    return React.createElement(
-        "h1",
-        null,
-        "  Hello world "
-      );
-}
-
-ReactDOM.render(App(), document.getElementById('root'));
+ReactDOM.render(<App />, document.getElementById('root'));

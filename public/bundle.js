@@ -937,22 +937,23 @@ module.exports = focusNode;
 /* 14 */
 /***/ (function(module, exports, __webpack_require__) {
 
+"use strict";
+
+
+var _App = __webpack_require__(27);
+
+var _App2 = _interopRequireDefault(_App);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
 // import React from 'react'
 //cannot rely on user to use ES6 code, so we use webpack to convert to ES5
 
-const React = __webpack_require__(4);
-const ReactDOM = __webpack_require__(18);
+var React = __webpack_require__(4);
+var ReactDOM = __webpack_require__(18);
 
-function App() {
 
-    return React.createElement(
-        "h1",
-        null,
-        "  Hello world "
-      );
-}
-
-ReactDOM.render(App(), document.getElementById('root'));
+ReactDOM.render(React.createElement(_App2.default, null), document.getElementById('root'));
 
 /***/ }),
 /* 15 */
@@ -18261,6 +18262,63 @@ function camelize(string) {
 }
 
 module.exports = camelize;
+
+/***/ }),
+/* 27 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = __webpack_require__(4);
+
+var _react2 = _interopRequireDefault(_react);
+
+var _Greeter = __webpack_require__(28);
+
+var _Greeter2 = _interopRequireDefault(_Greeter);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function App() {
+    return _react2.default.createElement(_Greeter2.default, { location: 'Impact Fellowship' });
+}
+
+exports.default = App;
+
+/***/ }),
+/* 28 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _react = __webpack_require__(4);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function Greeter(props) {
+
+    return _react2.default.createElement(
+        'h1',
+        null,
+        ' Hello ',
+        props.location,
+        ' '
+    );
+}
+
+exports.default = Greeter;
 
 /***/ })
 /******/ ]);
