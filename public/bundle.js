@@ -18282,10 +18282,19 @@ var _Greeter = __webpack_require__(28);
 
 var _Greeter2 = _interopRequireDefault(_Greeter);
 
+var _Taco = __webpack_require__(29);
+
+var _Taco2 = _interopRequireDefault(_Taco);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function App() {
-    return _react2.default.createElement(_Greeter2.default, { location: 'Impact Fellowship' });
+    return _react2.default.createElement(
+        'div',
+        null,
+        _react2.default.createElement(_Greeter2.default, { location: 'Impact Fellowship' }),
+        _react2.default.createElement(_Taco2.default, { image: 'http://cdn-image.foodandwine.com/sites/default/files/styles/medium_2x/public/201503-xl-tacos-al-pastor.jpg?itok=i3hQ9X1W', name: 'Al Pastor' })
+    );
 }
 
 exports.default = App;
@@ -18319,6 +18328,102 @@ function Greeter(props) {
 }
 
 exports.default = Greeter;
+
+/***/ }),
+/* 29 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = __webpack_require__(4);
+
+var _react2 = _interopRequireDefault(_react);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Taco = function (_React$Component) {
+    _inherits(Taco, _React$Component);
+
+    function Taco() {
+        _classCallCheck(this, Taco);
+
+        var _this = _possibleConstructorReturn(this, (Taco.__proto__ || Object.getPrototypeOf(Taco)).call(this));
+
+        _this.state = {
+            opened: true,
+            astronauts: 0
+        };
+        _this.toggleTaco = _this.toggleTaco.bind(_this);
+        return _this;
+    }
+
+    _createClass(Taco, [{
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            var _this2 = this;
+
+            fetch('http://api.open-notify.org/astros.json').then(function (res) {
+                return res.body;
+            }).then(function (numInSpace) {
+
+                _this2.setState({
+                    astronauts: numInSpace.number
+                });
+            });
+        }
+    }, {
+        key: 'toggleTaco',
+        value: function toggleTaco() {
+            this.setState({
+                opened: !this.state.opened
+            });
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                null,
+                _react2.default.createElement(
+                    'h1',
+                    null,
+                    ' There are ',
+                    this.state.astronauts,
+                    ' on the ISS right now '
+                ),
+                _react2.default.createElement(
+                    'h1',
+                    { onClick: this.toggleTaco },
+                    ' ',
+                    this.props.name,
+                    ' '
+                ),
+                this.state.opened ? _react2.default.createElement(
+                    'div',
+                    null,
+                    _react2.default.createElement('img', { src: this.props.image })
+                ) : null
+            );
+        }
+    }]);
+
+    return Taco;
+}(_react2.default.Component);
+
+exports.default = Taco;
 
 /***/ })
 /******/ ]);
